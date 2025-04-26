@@ -23,14 +23,15 @@ class Menu:
     def add_product(self, product):
         if product not in self.products:
             self.products.append(product)
+            return True
+        return False
 
     #funcao remover produto
     def remove_product(self, product):
-        for p in self.products:
-            if p == product:
+        if product in self.products:
                 self.products.remove(product)
-                return    
-        return
+                return True
+        return False
     
     #funcao imprimir cardapio
     def show_menu(self):
