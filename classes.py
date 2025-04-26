@@ -1,10 +1,23 @@
+#Cliente
 class Cliente:
     def __init__(self, nome, email):
         self.nome = nome
         self.email = email
 
+#Pedido
+class Order:
+    def __init__(self, customer, price, order_number):
+        self.name = customer.nome
+        self.email = customer.email
+        self.price = price
+        self.order_number = order_number
 
-#classe produtos
+    #caso dê o print(pedido), retorna as info
+    def __str__(self):
+        return f"Cliente: {self.name}\nEmail: {self.email}\nValor: {self.price:.2f}\nNúmero do Pedido: {self.order_number}"
+
+
+#Produtos
 class Product:
     def __init__(self, name, price):
         self.name = name
@@ -14,7 +27,7 @@ class Product:
         return f"Produto: {self.name}\nPreço: R${self.price:.2f}"
 
 
-#classe cardapio
+#Cardapio
 class Menu:
     def __init__(self):
         self.products = []
