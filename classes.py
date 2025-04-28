@@ -8,7 +8,7 @@ class Customer:
         self.name = name
         self.phone_number = phone_number
         self.email = email
-        self.endereço = enderenço
+        self.endereço = endereço
         self.cpf = cpf
    
     def registerUser(self) -> None:
