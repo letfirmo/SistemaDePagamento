@@ -39,6 +39,19 @@ class Payment:
         self.order = order
         self.method = method
 
+#Produto
+class Product:
+    def __init__(self, name, price, description=""):
+        self.product = name
+        self.description = description
+        self.price = price
+
+    def new_price(self, price):
+        self.price = price
+
+    def new_description(self, description):
+        self.description = description
+
 
 
 
