@@ -104,9 +104,31 @@ class Pagamento:
 
     def validar(self):
         pass
-#
 
+# Avaliação dos clientes
 
+class AvaliacaoCliente:
+    def __init__(self, cliente_nome):
+        self.cliente_nome = cliente_nome
+        self.nota = None
+        self.comentario = None
+
+    def registrar_avaliacao(self, nota, comentario=""):
+        if nota < 1 or nota > 5:
+            raise ValueError("Avalie sua experiência entre 1 e 5.")
+        self.nota = nota
+        self.comentario = comentario.strip()
+
+    def mostrar_avaliacao(self):
+        if self.nota is None:
+            return f"{self.cliente_nome} Sem nenhuma avaliação."
+        avaliacao = f"{Avaliação de {self.cliente_nome}:\n"
+        avaliacao += f"Nota: {self.nota}/5\n"
+        if self.comentario:
+            avaliacao += f"Comentário: {self.comentario}"
+        else:
+            avaliacao += "Nenhum comentário foi efetuado."
+        return avaliacao
 
 
 ######classes que não serão usadas agora#######
