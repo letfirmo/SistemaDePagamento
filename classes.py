@@ -15,17 +15,65 @@ class Customer:
     def updateUser(self) -> None:
         print(f"Perfil do usuário {self.name} atualizado!")
 
+#Produto
+class Product:
+    def __init__(self, id: int, name: str, price: Decimal, description: str):
+        self.id = id
+        self.name = name
+        self.description = description
+        self.price = price
+
+    def updatePrice(self, newPrice: Decimal) -> None:
+        self.price = newPrice
+
+    def updateDescription(self, newDescription: str) -> str:
+        self.description = newDescription
+        return self.description
+
+    def __str__(self):
+        return f"Produto: {self.name}\nPreço: R${self.price:.2f}" # se for deixar em Decimal vai ter que alterar a lógica de formatação
+
+
 #Pedido
 class Order:
-    def __init__(self, customer: Customer, value, order_number):
+    def __init__(self, status: str, id: int, customer: Customer, value, order_number):
+        self.id = id
+        # self.status = 'Novo' # Verificar se faz sentido esse status de confirmação de pedido os métodos estão comentados abaixo
         self.name = customer.name
         self.phone_number = customer.phone_number
         self.email = customer.email
         self.phone_number = customer.phone_number
         self.value = value
         self.order_number = order_number
+        self.products = []
+        self.quantities = []
+
+    def addProduct(self, product: Product, amount: int) -> None:
+        self.products.append(product)
+        self.quantities.append(amount)
+    
+    def removeProduct(self, product: Product) -> None:
+        if product in self.products:
+            index = self.products.index(product)
+            self.products.pop(index)
+            self.quantities.pop(index)
+    
+    def total(self, product: Product) -> Decimal:
+        total = Decimal('0.00')
+        for product, amount in zip(self.products, self.quantities):
+            total += product.price * amount
+        return total
+
+    # def confirm(self) -> None:
+    #     self.status = "Confirmado"
+    #     print(f"Pedido {self.id} confirmado")
+    
+    # def cancel(self) -> None:
+    #     self.status = "Cancelado"
+    #     print(f"Pedido {self.id} cancelado")
 
     #caso dê o print(pedido), retorna as info
+     # acho que não precisa identificar isso tudo não, só dar um print no costumer ele já tras todas as informações
     def __str__(self):
         return f"Cliente: {self.name}\nEmail: {self.email}\nValor: {self.price:.2f}\nNúmero do Pedido: {self.order_number}"
 
@@ -53,25 +101,6 @@ class Pagamento:
 
     def validar(self):
         pass
-
-#Produto
-class Product:
-    def __init__(self, id: int, name: str, price: Decimal, description: str):
-        self.id = id
-        self.name = name
-        self.description = description
-        self.price = price
-
-    def updatePrice(self, newPrice: Decimal) -> None:
-        self.price = newPrice
-
-    def updateDescription(self, newDescription: str) -> str:
-        self.description = newDescription
-        return self.description
-
-    def __str__(self):
-        return f"Produto: {self.name}\nPreço: R${self.price:.2f}" # se for deixar em Decimal vai ter que alterar a lógica de formatação
-
 #
 
 
