@@ -83,7 +83,7 @@ class Order:
 #Método de pagamento
 class Method:
     cash = "Dinheiro"
-    debit_card = "Cartão de débido"
+    debit_card = "Cartão de débito"
     credit_card = "Cartão de crédito"
     pix = "Pix"
 
