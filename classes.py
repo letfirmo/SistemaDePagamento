@@ -1,4 +1,5 @@
 from decimal import Decimal
+from datetime import datetime
 
 #Cliente
 class Customer:
@@ -36,10 +37,22 @@ class Method:
     pix = "Pix"
 
 #Pagamento
-class Payment:
-    def __init__(self, order: Order, method: Method):
+class Pagamento:
+    def __init__(self, pagamentoID, order: Order, method: Method, valor):
+        self.pagamentoID = pagamentoID
         self.order = order
         self.method = method
+        self.valor = valor
+        self.dataPagamento = datetime.now()
+
+    def processar(self):
+        pass
+
+    def estornar(self):
+        pass
+
+    def validar(self):
+        pass
 
 #Produto
 class Product:
