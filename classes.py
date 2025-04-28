@@ -3,11 +3,12 @@ from datetime import datetime
 
 #Cliente
 class Customer:
-    def __init__(self, id: int, name: str, email: str, phone_number: int):
+    def __init__(self, id: int, name: str, email: str, phone_number: int, cpf):
         self.id = id
         self.name = name
         self.phone_number = phone_number
         self.email = email
+        self.cpf = cpf
    
     def registerUser(self) -> None:
         print(f"Usuário {self.name} cadastrado!")
