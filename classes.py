@@ -45,6 +45,7 @@ class Order:
         self.phone_number = customer.phone_number
         self.email = customer.email
         self.phone_number = customer.phone_number
+        self.cpf = customer.cpf
         self.value = value
         self.order_number = order_number
         self.products = []
