@@ -1,23 +1,25 @@
+from decimal import Decimal
+
 #Cliente
 class Customer:
-    def __init__(self, name, phone_number, address):
+    def __init__(self, id: int, name: str, email: str, phone_number: int):
+        self.id = id
         self.name = name
         self.phone_number = phone_number
-        self.address = address
-
-#Produto
-class Product:
-    def __init__(self, name, price):
-        self.name = name
-        self.price = price
-
-    def __str__(self):
-        return f"Produto: {self.name}\nPreço: R${self.price:.2f}"
+        self.email = email
+   
+    def registerUser(self) -> None:
+        print(f"Usuário {self.name} cadastrado!")
+    
+    def updateUser(self) -> None:
+        print(f"Perfil do usuário {self.name} atualizado!")
 
 #Pedido
 class Order:
     def __init__(self, customer: Customer, value, order_number):
         self.name = customer.name
+        self.phone_number = customer.phone_number
+        self.email = customer.email
         self.phone_number = customer.phone_number
         self.value = value
         self.order_number = order_number
@@ -41,16 +43,23 @@ class Payment:
 
 #Produto
 class Product:
-    def __init__(self, name, price, description=""):
-        self.product = name
+    def __init__(self, id: int, name: str, price: Decimal, description: str):
+        self.id = id
+        self.name = name
         self.description = description
         self.price = price
 
-    def new_price(self, price):
-        self.price = price
+    def updatePrice(self, newPrice: Decimal) -> None:
+        self.price = newPrice
 
-    def new_description(self, description):
-        self.description = description
+    def updateDescription(self, newDescription: str) -> str:
+        self.description = newDescription
+        return self.description
+
+    def __str__(self):
+        return f"Produto: {self.name}\nPreço: R${self.price:.2f}" # se for deixar em Decimal vai ter que alterar a lógica de formatação
+
+#
 
 
 
