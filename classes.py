@@ -106,7 +106,6 @@ class Pagamento:
         pass
 
 # Avaliação dos clientes
-
 class AvaliacaoCliente:
     def __init__(self, cliente_nome):
         self.cliente_nome = cliente_nome
@@ -129,7 +128,6 @@ class AvaliacaoCliente:
         else:
             avaliacao += "Nenhum comentário foi efetuado."
         return avaliacao
-        
 
 
 ######classes que não serão usadas agora#######
