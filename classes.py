@@ -131,7 +131,7 @@ class AvaliacaoCliente:
 
 
 
-######classes que não serão usadas agora#######
+#####classes que não serão usadas agora#######
 
 #Cardapio
 #class Menu:
