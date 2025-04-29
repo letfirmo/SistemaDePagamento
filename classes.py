@@ -120,14 +120,15 @@ class AvaliacaoCliente:
 
     def mostrar_avaliacao(self):
         if self.nota is None:
-            return f"{self.cliente_nome} Sem nenhuma avaliação."
-        avaliacao = f"{Avaliação de {self.cliente_nome}:\n"
-        avaliacao += f"Nota: {self.nota}/5\n"
+            return f"{self.cliente_nome} - Sem nenhuma avaliação."
+            avaliacao = f"Avaliação de {self.cliente_nome}:\n"
+            avaliacao += f"Nota: {self.nota}/5\n"
         if self.comentario:
             avaliacao += f"Comentário: {self.comentario}"
         else:
             avaliacao += "Nenhum comentário foi efetuado."
         return avaliacao
+
 
 
 ######classes que não serão usadas agora#######
