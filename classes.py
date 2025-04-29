@@ -129,6 +129,7 @@ class AvaliacaoCliente:
         else:
             avaliacao += "Nenhum comentário foi efetuado."
         return avaliacao
+        
 
 
 ######classes que não serão usadas agora#######
