@@ -41,6 +41,13 @@ model Pedido {
   itens     Json
   total     Float
   metodo    MetodoPagamento
+  status Status
+  pixKey       String
   pago      Boolean        @default(false)
   createdAt DateTime       @default(now())
+}
+
+enum Status{
+  pending
+  paid
 }

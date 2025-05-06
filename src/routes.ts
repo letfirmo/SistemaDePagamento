@@ -1,5 +1,7 @@
 import { Router } from "express";
-import { registerClient } from "./cliente/Clientcontroller";
+import { registerClient } from "./cliente/ClientController";
+import { registrarPedido, verificarPedido, confirmarPagamento } from "./pedido/OrderController";
+
 
 const router = Router()
 
@@ -16,5 +18,17 @@ router.post('/clientes', (req, res, next) => {
 
 
 // Rotas para os Pedidos
+router.post('/pedidos', (req, res, next) => {
+    registrarPedido(req, res).catch(next);
+  });
+  
+  router.get('/pedidos/:id', (req, res, next) => {
+    verificarPedido(req, res).catch(next);
+  });
+  
+  router.post('/pedidos/:id/pagar', (req, res, next) => {
+    confirmarPagamento(req, res).catch(next);
+  });
+
 
 export default router;
