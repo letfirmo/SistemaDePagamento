@@ -4,18 +4,18 @@ import { criarPedido, buscarPedidoPorId, pagarPedido } from "./OrderService";
 
 export async function registrarPedido(req: Request, res: Response) {
     try {
-        const { clienteId, itens, total } = req.body;
+        const { clienteId, itens, total, metodo } = req.body;
 
-        if (!clienteId || !itens || !total) {
+        if (!clienteId || !itens || !total || !metodo) {
             return res.status(400).json({ erro: "Dados incompletos." });
         }
 
-        const pedido = await criarPedido(clienteId, itens, total);
+        const pedido = await criarPedido(clienteId, itens, total, metodo);
 
         return res.status(201).json({
             message: "Pedido criado. Aguardando pagamento via PIX.",
             pedido,
-            qrCode: `https://fakepix.com/qrcode/${pedido.pixKey}`
+            qrCode: `https://fakepix.com/qrcode/${pedido.pagamento}` // Vamos ter que alterar isso, caso precise implementar outro método de pagamento
         });
     } catch (err) {
         console.error(err);

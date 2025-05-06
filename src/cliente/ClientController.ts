@@ -24,7 +24,7 @@ export async function registerClient(req: Request, res: Response) {
         if (error instanceof Error && error.message.includes('Email já está em uso')) {
             res.status(409).json({ erro: error.message });
         } else {
-            console.error(error); // Log para debug
+            console.error(error);
             res.status(500).json({ erro: 'Erro interno' });
         }
     }
