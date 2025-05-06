@@ -41,6 +41,7 @@ model Pedido {
   itens     Json
   total     Float
   metodo    MetodoPagamento
+  pixKey    String
   pago      Boolean        @default(false)
   createdAt DateTime       @default(now())
 }
