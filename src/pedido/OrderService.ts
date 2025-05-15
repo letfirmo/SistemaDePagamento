@@ -5,8 +5,14 @@ import { randomInt } from "crypto";
 const prisma = new PrismaClient();
 
 
-export async function criarPedido(clienteId: string, itens: string[], total: number, metodo: MetodoPagamento) {
+export async function criarPedido(
+    clienteId: string, 
+    itens: string[], 
+    total: number, 
+    metodo: MetodoPagamento
+) {
     // Verificação de qual é o método de pagamento
+    // Lógica para pagamento pix
     if (metodo === 'PIX') {
         const pagamento: string = `pix-${randomInt(100000, 999999)}`;
 
