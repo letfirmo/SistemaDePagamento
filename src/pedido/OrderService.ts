@@ -4,29 +4,33 @@ import { randomInt } from "crypto";
 
 const prisma = new PrismaClient();
 
-
 export async function criarPedido(
     clienteId: string, 
     itens: string[], 
     total: number, 
-    metodo: MetodoPagamento
+    metodo: MetodoPagamento,
+    dadosCartao?: {numero: string, validade: string, cvv:string }
 ) {
     // Verificação de qual é o método de pagamento
     // Lógica para pagamento pix
     if (metodo === 'PIX') {
-        const pagamento: string = `pix-${randomInt(100000, 999999)}`;
+        const pagamento = `pix-${randomInt(100000, 999999)}`;
 
         const pedido = await prisma.pedido.create({
             data: {
                 clienteId,
                 itens: itens.join(", "),
                 total,
-                metodo,
+                metodo
             }
         });
     
         return {pedido, pagamento};
-    } else {
+    } 
+    // Lógica para pagamento cartao
+
+    
+    else {
         throw new Error("Ainda não existe outro método de pagamento")
     }
 }
