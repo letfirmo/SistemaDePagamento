@@ -24,7 +24,7 @@ export async function criarPedido(
             throw new Error("Dados do cartão são obrigatórios para esse método.");
         }
 
-        pagamento = `autorizado-${randomInt(1000, 9999)}`;
+        pagamento = `autorizado-${randomInt(1000, 9999)}`; // simula aprovaçao
     }
     else {
         throw new Error("Ainda não existe outro método de pagamento ou método não suportado.")
