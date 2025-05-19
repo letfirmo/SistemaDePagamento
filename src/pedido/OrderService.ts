@@ -28,7 +28,9 @@ export async function criarPedido(
         if(!dadosCartao){
             throw new Error("Dados do cartão são obrigatórios para esse método.");
         }
-
+        if (dadosCartao.numero.length !== 16 || !dadosCartao.cvv || !dadosCartao.validade) {
+            throw new Error("Dados do cartão inválidos.");
+        }
 
 
         identificadorPagamento = `autorizado-${randomInt(1000, 9999)}`; // simulando aprovaçao
