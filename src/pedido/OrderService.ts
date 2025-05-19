@@ -10,12 +10,12 @@ export async function criarPedido(
     metodo: MetodoPagamento,
     dadosCartao?: {numero: string, validade: string, cvv:string }
 ) {
-    let pagamento: string | undefined
+    let identificadorPagamento: string | undefined
 
     // Verificação do método de pagamento
     // Lógica para pagamento pix
     if (metodo === 'PIX') {
-        pagamento = `pix-${randomInt(100000, 999999)}`;
+        identificadorPagamento = `pix-${randomInt(100000, 999999)}`;
 
     } 
     // Lógica para pagamento cartao
@@ -24,14 +24,14 @@ export async function criarPedido(
             throw new Error("Dados do cartão são obrigatórios para esse método.");
         }
 
-        
 
-        pagamento = `autorizado-${randomInt(1000, 9999)}`; // simulando aprovaçao
+
+        identificadorPagamento = `autorizado-${randomInt(1000, 9999)}`; // simulando aprovaçao
     }
     else {
         throw new Error("Ainda não existe outro método de pagamento ou método não suportado.")
     }
-    const ultimosDigitos = dadosCartao?.numero.slice(4) // captura os ultimos 4 digitos do cartão
+    const ultimosDigitos = dadosCartao?.numero.slice(-4) // captura os ultimos 4 digitos do cartão
 
     const pedido = await prisma.pedido.create({
         data: {
@@ -39,12 +39,12 @@ export async function criarPedido(
             itens: itens.join(", "),
             total,
             metodo,
-            pixKey: metodo === 'PIX'? pagamento: null,
+            pixKey: metodo === 'PIX'? identificadorPagamento: null,
             ultimosDigitos: ultimosDigitos ?? null
         }
     });
     
-    return {pedido, pagamento};
+    return {pedido, pagamento: identificadorPagamento};
 }
 
 export async function buscarPedidoPorId(id: string) {
