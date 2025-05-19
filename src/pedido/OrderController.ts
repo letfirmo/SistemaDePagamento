@@ -16,7 +16,7 @@ export async function registrarPedido(req: Request, res: Response) {
             return res.status(201).json({
             message: "Pedido criado. Aguardando pagamento via PIX.",
             pedido,
-            qrCode: `https://fakepix.com/qrcode/${pedido.pagamento}` // Vamos ter que alterar isso, caso precise implementar outro método de pagamento
+            qrCode: `https://fakepix.com/qrcode/${pedido.pagamento}`
           });
         }else if(metodo === 'CARTAO_CREDITO' || metodo === 'CARTAO_DEBITO'){
             return res.status(201).json({
