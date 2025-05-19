@@ -12,6 +12,11 @@ export async function criarPedido(
 ) {
     let identificadorPagamento: string | undefined
 
+    // Verificação do pedido
+    if (itens.length === 0) {
+        throw new Error("É necessário adicionar itens ao pedido.")
+    }
+    
     // Verificação do método de pagamento
     // Lógica para pagamento pix
     if (metodo === 'PIX') {
