@@ -12,7 +12,7 @@ export async function criarPedido(
 ) {
     let identificadorPagamento: string | undefined
 
-    // Verificação do pedido
+    // Verificação do pedido 
     if (itens.length === 0) {
         throw new Error("É necessário adicionar itens ao pedido.")
     }
