@@ -4,7 +4,7 @@ import { randomInt } from "crypto";
 const prisma = new PrismaClient();
 
 export async function criarPedido(
-    clienteId: string, 
+    clienteId: number, 
     itens: string[], 
     total: number, 
     metodo: MetodoPagamento,
@@ -47,14 +47,14 @@ export async function criarPedido(
     return {pedido, pagamento};
 }
 
-export async function buscarPedidoPorId(id: string) {
+export async function buscarPedidoPorId(id: number) {
     return prisma.pedido.findUnique({
         where: { id },
         include: { cliente: true }
     });
 }
 
-export async function pagarPedido(id: string) {
+export async function pagarPedido(id: number) {
     const pedido = await prisma.pedido.findUnique({ where: { id } });
 
     if (!pedido) throw new Error("Pedido não encontrado.");

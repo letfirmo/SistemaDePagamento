@@ -18,3 +18,21 @@ export async function criarCliente(nome: string, email: string) {
     }
     });
 }
+
+export async function findAllClients() {
+    const allClients = await prisma.cliente.findMany();
+
+    return allClients
+}
+
+export async function findOneClient(email:string) {
+    const client = await prisma.cliente.findUnique({where: { email }})
+
+    return client
+}
+
+export async function deleteClient(user:any) {
+    const clientDeleted = await prisma.cliente.delete({where: { id: user.id }})
+
+    return clientDeleted
+}

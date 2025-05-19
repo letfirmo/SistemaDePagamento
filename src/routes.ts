@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { registerClient } from "./cliente/ClientController";
+import { deleteUser, getAllClients, getOneClient, registerClient } from "./cliente/ClientController";
 import { registrarPedido, verificarPedido, confirmarPagamento } from "./pedido/OrderController";
 
 
@@ -10,9 +10,21 @@ router.get('/', (req, res) => {
 })
 
 // Rotas para Clientes
-router.post('/clientes', (req, res, next) => {
+router.post('/register', (req, res, next) => {
     registerClient(req, res).catch(next);
 });
+router.get('/clientes', (req, res, next) => {
+  getAllClients(req,res).catch(next);
+})
+router.get('/cliente', (req, res, next) => {
+  getOneClient(req,res).catch(next);
+})
+router.delete('/cliente', (req, res, next) => {
+  deleteUser(req,res).catch(next);
+})
+router.put('/cliente', (req, res, next) => {
+  // getOneClient(req,res).catch(next);
+})
 
 // Rota para os Produtos
 

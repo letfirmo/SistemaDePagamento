@@ -34,7 +34,7 @@ export async function registrarPedido(req: Request, res: Response) {
 
 export async function verificarPedido(req: Request, res: Response) {
     try {
-        const { id } = req.params;
+        const { id } = req.body;
         const pedido = await buscarPedidoPorId(id);
 
         if (!pedido) {
@@ -50,7 +50,7 @@ export async function verificarPedido(req: Request, res: Response) {
 
 export async function confirmarPagamento(req: Request, res: Response) {
     try {
-        const { id } = req.params;
+        const { id } = req.body;
 
         const pedido = await pagarPedido(id);
 
