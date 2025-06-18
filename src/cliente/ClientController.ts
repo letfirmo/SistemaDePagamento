@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { criarCliente } from './ClientService';
+import { criarCliente, deleteClient, findAllClients, findOneClient } from './ClientService';
 
 export async function registerClient(req: Request, res: Response) {
     try {
@@ -27,5 +27,57 @@ export async function registerClient(req: Request, res: Response) {
             console.error(error);
             res.status(500).json({ erro: 'Erro interno' });
         }
+    }
+}
+
+export async function getAllClients(req:Request, res: Response) {
+    try {
+        const allClients = await findAllClients();
+
+        res.status(200).json({message: `Aqui estão todos os clientes:`, allClients})
+    }catch(error) {
+        console.error(error)
+        res.status(500).json({erro: "Erro Interno"})
+    }
+}
+
+export async function getOneClient(req:Request, res: Response) {
+    try {
+        const {email} = req.body;
+
+        if(!email) {
+            res.status(404).json({message: "Email não cadastrado"})
+        }
+
+        const client = await findOneClient(email)
+
+        res.status(200).json({message: `Aqui está o cliente:`, client})
+    }catch(error) {
+        console.error(error)
+        res.status(500).json({erro: "Erro Interno"})
+    }
+}
+
+export async function deleteUser(req: Request, res: Response) {
+    try {
+        const {email} = req.body;
+
+        if(!email) {
+            res.status(404).json({message: "Email não cadastrado"})
+        }
+
+        const user = await findOneClient(email)
+
+        if(!user) {
+            res.status(404).json({message: "Usuário não encontrado"})
+        }
+
+        const userDeleted = await deleteClient(user);
+
+        res.status(200).json({message: "Usuário deletado com sucesso!", userDeleted})
+
+    } catch(error) {
+        console.error(error)
+        res.status(500).json({erro: "Erro Interno"})
     }
 }

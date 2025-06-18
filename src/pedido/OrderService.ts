@@ -4,7 +4,7 @@ import { randomInt } from "crypto";
 const prisma = new PrismaClient();
 
 export async function criarPedido(
-    clienteId: string, 
+    clienteId: number, 
     itens: string[], 
     total: number, 
     metodo: MetodoPagamento,
@@ -12,6 +12,11 @@ export async function criarPedido(
 ) {
     let identificadorPagamento: string | undefined
 
+    // Verificação do pedido 
+    if (itens.length === 0) {
+        throw new Error("É necessário adicionar itens ao pedido.")
+    }
+    
     // Verificação do método de pagamento
     // Lógica para pagamento pix
     if (metodo === 'PIX') {
@@ -23,7 +28,9 @@ export async function criarPedido(
         if(!dadosCartao){
             throw new Error("Dados do cartão são obrigatórios para esse método.");
         }
-
+        if (dadosCartao.numero.length !== 16 || !dadosCartao.cvv || !dadosCartao.validade) {
+            throw new Error("Dados do cartão inválidos.");
+        }
 
 
         identificadorPagamento = `autorizado-${randomInt(1000, 9999)}`; // simulando aprovaçao
@@ -47,14 +54,14 @@ export async function criarPedido(
     return {pedido, pagamento: identificadorPagamento};
 }
 
-export async function buscarPedidoPorId(id: string) {
+export async function buscarPedidoPorId(id: number) {
     return prisma.pedido.findUnique({
         where: { id },
         include: { cliente: true }
     });
 }
 
-export async function pagarPedido(id: string) {
+export async function pagarPedido(id: number) {
     const pedido = await prisma.pedido.findUnique({ where: { id } });
 
     if (!pedido) throw new Error("Pedido não encontrado.");

@@ -8,9 +8,9 @@ export async function criarProduto(data: {
     nome: string; id: any; 
 }) {
 
-    const produto = await prisma.produto.findUnique({where: {id: data.id}})
+    // const produto = await prisma.produto.findUnique({where: {id: data.id}})
 
-    if(!produto) throw new Error("Esse produto já existe")
+    // if(!produto) throw new Error("Esse produto já existe")
 
     return prisma.produto.create({
         data: {
@@ -19,4 +19,24 @@ export async function criarProduto(data: {
             estoque: data.estoque,            
         }
     })
+}
+
+export async function findAllProducts() {
+    const produtos = await prisma.produto.findMany()
+
+    return produtos
+}
+
+export async function findOneProduct(nome: string, id: number) {
+    const produto = await prisma.produto.findUnique({where: {
+        nome, id
+    }})
+
+    return produto
+}
+
+export async function deleteProduct(produto:any) {
+    const product = await prisma.produto.delete({where: { id: produto.id }})
+
+    return product
 }

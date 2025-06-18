@@ -1,6 +1,21 @@
 
 import { Request, Response } from "express";
 import { criarPedido, buscarPedidoPorId, pagarPedido } from "./OrderService";
+import { findOneProduct } from "../produto/ProductService";
+
+export async function criarCarrinho(req:Request, res:Response) {
+    try{
+        const {clientId, itens, total} = req.body
+
+        if (!clientId) {
+            res.status(404).json({error: "Cliente não encontrado"})
+        }     
+
+    } catch(error) {
+        console.error(error)
+        res.status(500).json({error: "Internal Server Error"})
+    }
+}
 
 export async function registrarPedido(req: Request, res: Response) {
     try {
@@ -18,7 +33,7 @@ export async function registrarPedido(req: Request, res: Response) {
             pedido,
             qrCode: `https://fakepix.com/qrcode/${pedido.pagamento}`
           });
-        }else if(metodo === 'CARTAO_CREDITO' || metodo === 'CARTAO_DEBITO'){
+        }else if((metodo === 'CARTAO_CREDITO' || metodo === 'CARTAO_DEBITO') && dadosCartao){
             return res.status(201).json({
             message: "Pedido criado e pagamento autorizado via cartão",
             pedido,
@@ -34,7 +49,7 @@ export async function registrarPedido(req: Request, res: Response) {
 
 export async function verificarPedido(req: Request, res: Response) {
     try {
-        const { id } = req.params;
+        const { id } = req.body;
         const pedido = await buscarPedidoPorId(id);
 
         if (!pedido) {
@@ -50,7 +65,7 @@ export async function verificarPedido(req: Request, res: Response) {
 
 export async function confirmarPagamento(req: Request, res: Response) {
     try {
-        const { id } = req.params;
+        const { id } = req.body;
 
         const pedido = await pagarPedido(id);
 

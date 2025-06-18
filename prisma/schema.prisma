@@ -14,14 +14,14 @@ datasource db {
 }
 
 model Cliente {
-  id      String  @id @default(uuid())
+  id      Int  @id @default(autoincrement())
   nome    String
   email   String  @unique
   pedidos Pedido[]
 }
 
 model Produto {
-  id     String  @id @default(uuid())
+  id     Int  @id @default(autoincrement())
   nome   String
   preco  Float
   estoque Int    @default(0)
@@ -35,9 +35,9 @@ enum MetodoPagamento {
 }
 
 model Pedido {
-  id        String          @id @default(uuid())
+  id        Int          @id @default(autoincrement())
   cliente   Cliente         @relation(fields: [clienteId], references: [id])
-  clienteId String
+  clienteId Int
   itens     Json
   total     Float
   metodo    MetodoPagamento
