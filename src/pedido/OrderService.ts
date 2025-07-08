@@ -3,12 +3,18 @@ import { randomInt } from "crypto";
 
 const prisma = new PrismaClient();
 
+interface IDadosCartao{
+    numero: string;
+    validade: string;
+    cvv:string 
+}
+
 export async function criarPedido(
     clienteId: number, 
     itens: string[], 
     total: number, 
     metodo: MetodoPagamento,
-    dadosCartao?: {numero: string, validade: string, cvv:string }
+    dadosCartao?: IDadosCartao
 ) {
     let identificadorPagamento: string | undefined
 

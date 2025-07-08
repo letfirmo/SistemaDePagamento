@@ -2,11 +2,14 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export async function criarProduto(data: {
+interface IProduto{
     preco: number;
     estoque: number;
-    nome: string; id: any; 
-}) {
+    nome: string; 
+    id: any; 
+}
+
+export async function criarProduto(data: IProduto) {
 
     // const produto = await prisma.produto.findUnique({where: {id: data.id}})
 
