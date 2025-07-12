@@ -4,9 +4,18 @@ Este é um sistema de pagamento simples construído em **Node.js com TypeScript*
 
 ---
 
+## - Modelagem inicial do sistema de pagamento
+
+![Diagrama UML do Sistema de Pagamento](src/assets/images/UML.jpeg)
+
 ## 📁 Estrutura do Projeto
 
 - `src/`: Código-fonte da aplicação
+    ├── models/         # Classes de domínio (Cliente, Pedido, Pagamento, etc.)
+    ├── services/       # Lógica de negócio como relatórios
+    ├── utils/          # Tratamento de erros, logs
+    ├── __tests__/      # Testes com Vitest
+    └── mock/           # Simulação de requisições e dados mockados
 - `prisma/`: Migrations e schema do banco
 - `docker-compose.yml`: Configuração do banco via Docker
 - `.env`: Variáveis de ambiente
