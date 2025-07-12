@@ -30,6 +30,7 @@ Antes de começar, verifique se você tem instalado:
 - [Node.js](https://nodejs.org/)
 - [Docker e Docker Compose](https://www.docker.com/)
 - [Git](https://git-scm.com/)
+- Vitest: npm install -D vitest @vitest/ui 
 
 ---
 
