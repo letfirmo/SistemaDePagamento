@@ -1,5 +1,6 @@
-import { Region } from "./Region";
+//Entidade cliente
 
+import { Region } from "./Region";
 export class Customer {
   constructor(
     public id: string,
