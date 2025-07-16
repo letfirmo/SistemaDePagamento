@@ -1,5 +1,5 @@
 import { Region } from './models/Region';
-import { regions } from './base de dados/regions';
+import { regions } from './database/regions';
 
 export class RegionService {
   private regions = regions;
