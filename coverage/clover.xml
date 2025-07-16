@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1752629241630" clover="3.2.0">
-  <project timestamp="1752629241630" name="All files">
+<coverage generated="1752684770984" clover="3.2.0">
+  <project timestamp="1752684770984" name="All files">
     <metrics statements="110" coveredstatements="110" conditionals="21" coveredconditionals="21" methods="14" coveredmethods="14" elements="145" coveredelements="145" complexity="0" loc="110" ncloc="110" packages="5" files="16" classes="16"/>
     <package name="src">
       <metrics statements="0" coveredstatements="0" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
-      <file name="app.ts" path="F:\Leticia\ProjetosGit\SistemaDePagamento\SistemaDePagamento\src\app.ts">
+      <file name="app.ts" path="C:\Users\letic\OneDrive\Documentos\Projetos\SistemaDePagamento\src\app.ts">
         <metrics statements="0" coveredstatements="0" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
       </file>
     </package>
     <package name="src.database">
       <metrics statements="35" coveredstatements="35" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="customer.ts" path="F:\Leticia\ProjetosGit\SistemaDePagamento\SistemaDePagamento\src\database\customer.ts">
+      <file name="customer.ts" path="C:\Users\letic\OneDrive\Documentos\Projetos\SistemaDePagamento\src\database\customer.ts">
         <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -27,7 +27,7 @@
         <line num="14" count="1" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
       </file>
-      <file name="product.ts" path="F:\Leticia\ProjetosGit\SistemaDePagamento\SistemaDePagamento\src\database\product.ts">
+      <file name="product.ts" path="C:\Users\letic\OneDrive\Documentos\Projetos\SistemaDePagamento\src\database\product.ts">
         <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -38,7 +38,7 @@
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
       </file>
-      <file name="regions.ts" path="F:\Leticia\ProjetosGit\SistemaDePagamento\SistemaDePagamento\src\database\regions.ts">
+      <file name="regions.ts" path="C:\Users\letic\OneDrive\Documentos\Projetos\SistemaDePagamento\src\database\regions.ts">
         <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -57,7 +57,7 @@
     </package>
     <package name="src.models">
       <metrics statements="60" coveredstatements="60" conditionals="12" coveredconditionals="12" methods="8" coveredmethods="8"/>
-      <file name="Card.ts" path="F:\Leticia\ProjetosGit\SistemaDePagamento\SistemaDePagamento\src\models\Card.ts">
+      <file name="Card.ts" path="C:\Users\letic\OneDrive\Documentos\Projetos\SistemaDePagamento\src\models\Card.ts">
         <metrics statements="12" coveredstatements="12" conditionals="3" coveredconditionals="3" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="cond" truecount="1" falsecount="0"/>
@@ -72,7 +72,7 @@
         <line num="15" count="7" type="stmt"/>
         <line num="16" count="1" type="stmt"/>
       </file>
-      <file name="Customer.ts" path="F:\Leticia\ProjetosGit\SistemaDePagamento\SistemaDePagamento\src\models\Customer.ts">
+      <file name="Customer.ts" path="C:\Users\letic\OneDrive\Documentos\Projetos\SistemaDePagamento\src\models\Customer.ts">
         <metrics statements="7" coveredstatements="7" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="4" count="1" type="stmt"/>
         <line num="5" count="1" type="cond" truecount="1" falsecount="0"/>
@@ -82,7 +82,7 @@
         <line num="9" count="18" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
       </file>
-      <file name="Order.ts" path="F:\Leticia\ProjetosGit\SistemaDePagamento\SistemaDePagamento\src\models\Order.ts">
+      <file name="Order.ts" path="C:\Users\letic\OneDrive\Documentos\Projetos\SistemaDePagamento\src\models\Order.ts">
         <metrics statements="10" coveredstatements="10" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
@@ -95,12 +95,12 @@
         <line num="14" count="3" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
       </file>
-      <file name="PaymentMethod.ts" path="F:\Leticia\ProjetosGit\SistemaDePagamento\SistemaDePagamento\src\models\PaymentMethod.ts">
+      <file name="PaymentMethod.ts" path="C:\Users\letic\OneDrive\Documentos\Projetos\SistemaDePagamento\src\models\PaymentMethod.ts">
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="2" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
       </file>
-      <file name="Pix.ts" path="F:\Leticia\ProjetosGit\SistemaDePagamento\SistemaDePagamento\src\models\Pix.ts">
+      <file name="Pix.ts" path="C:\Users\letic\OneDrive\Documentos\Projetos\SistemaDePagamento\src\models\Pix.ts">
         <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -112,7 +112,7 @@
         <line num="10" count="4" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
       </file>
-      <file name="Product.ts" path="F:\Leticia\ProjetosGit\SistemaDePagamento\SistemaDePagamento\src\models\Product.ts">
+      <file name="Product.ts" path="C:\Users\letic\OneDrive\Documentos\Projetos\SistemaDePagamento\src\models\Product.ts">
         <metrics statements="14" coveredstatements="14" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="cond" truecount="1" falsecount="0"/>
@@ -129,7 +129,7 @@
         <line num="16" count="22" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
       </file>
-      <file name="Region.ts" path="F:\Leticia\ProjetosGit\SistemaDePagamento\SistemaDePagamento\src\models\Region.ts">
+      <file name="Region.ts" path="C:\Users\letic\OneDrive\Documentos\Projetos\SistemaDePagamento\src\models\Region.ts">
         <metrics statements="6" coveredstatements="6" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="cond" truecount="1" falsecount="0"/>
@@ -141,16 +141,16 @@
     </package>
     <package name="src.services">
       <metrics statements="6" coveredstatements="6" conditionals="5" coveredconditionals="5" methods="4" coveredmethods="4"/>
-      <file name="CustomerService.ts" path="F:\Leticia\ProjetosGit\SistemaDePagamento\SistemaDePagamento\src\services\CustomerService.ts">
+      <file name="CustomerService.ts" path="C:\Users\letic\OneDrive\Documentos\Projetos\SistemaDePagamento\src\services\CustomerService.ts">
         <metrics statements="0" coveredstatements="0" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
       </file>
-      <file name="OrderService.ts" path="F:\Leticia\ProjetosGit\SistemaDePagamento\SistemaDePagamento\src\services\OrderService.ts">
+      <file name="OrderService.ts" path="C:\Users\letic\OneDrive\Documentos\Projetos\SistemaDePagamento\src\services\OrderService.ts">
         <metrics statements="0" coveredstatements="0" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
       </file>
-      <file name="RegionService.ts" path="F:\Leticia\ProjetosGit\SistemaDePagamento\SistemaDePagamento\src\services\RegionService.ts">
+      <file name="RegionService.ts" path="C:\Users\letic\OneDrive\Documentos\Projetos\SistemaDePagamento\src\services\RegionService.ts">
         <metrics statements="0" coveredstatements="0" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
       </file>
-      <file name="ReportService.ts" path="F:\Leticia\ProjetosGit\SistemaDePagamento\SistemaDePagamento\src\services\ReportService.ts">
+      <file name="ReportService.ts" path="C:\Users\letic\OneDrive\Documentos\Projetos\SistemaDePagamento\src\services\ReportService.ts">
         <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="cond" truecount="1" falsecount="0"/>
@@ -162,7 +162,7 @@
     </package>
     <package name="src.utils">
       <metrics statements="9" coveredstatements="9" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
-      <file name="ErrorHandler.ts" path="F:\Leticia\ProjetosGit\SistemaDePagamento\SistemaDePagamento\src\utils\ErrorHandler.ts">
+      <file name="ErrorHandler.ts" path="C:\Users\letic\OneDrive\Documentos\Projetos\SistemaDePagamento\src\utils\ErrorHandler.ts">
         <metrics statements="9" coveredstatements="9" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="cond" truecount="1" falsecount="0"/>
