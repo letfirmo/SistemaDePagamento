@@ -1,5 +1,4 @@
 // Entidade produto
-<<<<<<< HEAD
 
 export class Product {
     constructor(
@@ -16,8 +15,3 @@ export class Product {
         }
     }   
 }
-=======
-export class Product {
-    
-}
->>>>>>> fe4d641454f3738d1d4b925466d875cad8bc69a2
