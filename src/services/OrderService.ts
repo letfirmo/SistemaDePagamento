@@ -43,12 +43,21 @@ export class OrderService {
     return paymentMessage;
    }
 
+   deleteOrderById(id: string): boolean {
+      const index = this.orders.findIndex(o => o.id === id);
+      if (index !== -1) {
+        this.orders.splice(index, 1);
+        return true;
+      }
+      return false;
+    }
+
+
   private calculateTotal(items: Product[], customer: Customer): number{
     let productsTotal = 0;
     const delivery = customer.region.delivery;
-    items.forEach((i)=> (
-       productsTotal += i.price))
-       return productsTotal + delivery;
+    items.forEach((i)=> (productsTotal += i.price))
+    return productsTotal + delivery;
     }
 }
 
