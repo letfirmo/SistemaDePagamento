@@ -41,6 +41,4 @@ console.log("\nPAGAMENTOS:\n");
 console.log(pagamento1);
 console.log(pagamento2);
 console.log(pagamento3)
-
-console.log('\n--------------------------------RELATÓRIOS---------------------------------\n')
-console.log(report);
+console.log('\n'+report);
