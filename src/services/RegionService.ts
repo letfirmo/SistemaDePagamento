@@ -1,8 +1,7 @@
 import { Region } from './../models/Region';
-import { regions } from './../database/regions';
-
+import { regions } from '../database/regions';
 export class RegionService {
-  private regions = regions;
+  private regions: Region[] = regions;
 
   add(region: Region): void {
     if (this.regions.some(r => r.id === region.id)) {
