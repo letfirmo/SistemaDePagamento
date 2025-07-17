@@ -61,4 +61,4 @@ export class OrderService {
     }
 }
 
-export const orderservice = new OrderService();
+export const orderService = new OrderService();

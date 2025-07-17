@@ -3,11 +3,12 @@ import { regions } from '../database/regions';
 export class RegionService {
   private regions: Region[] = regions;
 
-  add(region: Region): void {
+  add(region: Region): Region {
     if (this.regions.some(r => r.id === region.id)) {
       throw new Error(`Região com ID ${region.id} já existe.`);
     }
     this.regions.push(region);
+    return region;
   }
 
   getAll(): Region[] {
