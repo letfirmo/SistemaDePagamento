@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/18</span>
+                <span class='fraction'>18/18</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/18</span>
+                <span class='fraction'>18/18</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -88,58 +88,58 @@
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">11x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">28x</span>
+<span class="cline-any cline-yes">28x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">27x</span>
+<span class="cline-any cline-yes">28x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">9x</span>
+<span class="cline-any cline-yes">9x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Customer } from "./../models/Customer";
+<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">import { Customer } from "./../models/Customer";
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export class CustomerService {</span>
-<span class="cstat-no" title="statement not covered" >  private customers: Customer[] = [];</span>
+export class CustomerService {
+  private customers: Customer[] = [];
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  add(customer: Customer): Customer {</span>
-<span class="cstat-no" title="statement not covered" >    const exists = this.customers.some(c =&gt; c.id === customer.id);</span>
-<span class="cstat-no" title="statement not covered" >    if (exists) {</span>
-<span class="cstat-no" title="statement not covered" >      throw new Error(`Cliente com ID ${customer.id} já existe.`);</span>
-<span class="cstat-no" title="statement not covered" >    }</span>
-<span class="cstat-no" title="statement not covered" >    this.customers.push(customer);</span>
-<span class="cstat-no" title="statement not covered" >    return customer</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
+  add(customer: Customer): Customer {
+    const exists = this.customers.some(c =&gt; c.id === customer.id);
+    if (exists) {
+      throw new Error(`Cliente com ID ${customer.id} já existe.`);
+    }
+    this.customers.push(customer);
+    return customer
+  }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  getAll(): Customer[] {</span>
-<span class="cstat-no" title="statement not covered" >    return [...this.customers]; </span>
-<span class="cstat-no" title="statement not covered" >  }</span>
+  getAll(): Customer[] {
+    return [...this.customers]; 
+  }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >  findById(id: string): Customer | undefined {</span>
-<span class="cstat-no" title="statement not covered" >    return this.customers.find(c =&gt; c.id === id);</span>
-<span class="cstat-no" title="statement not covered" >  }</span>
-<span class="cstat-no" title="statement not covered" >}</span>
+  findById(id: string): Customer | undefined {
+    return this.customers.find(c =&gt; c.id === id);
+  }
+}
 &nbsp;
-<span class="cstat-no" title="statement not covered" >export const customerService = new CustomerService()</span></pre></td></tr></table></pre>
+export const customerService = new CustomerService()</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-07-22T21:17:27.490Z
+                at 2025-07-22T21:45:52.700Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
