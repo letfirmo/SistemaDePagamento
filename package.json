@@ -16,8 +16,12 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/server.js",
-    "dev": "nodemon --watch src -e ts,json --exec ts-node src/app.ts",
-    "build": "tsc"
+    "dev": "nodemon --watch src -e ts,json --exec ts-node src/server.ts",
+    "build": "tsc",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@prisma/client": "^6.7.0",
@@ -27,6 +31,7 @@
   "devDependencies": {
     "@types/express": "^5.0.1",
     "@types/node": "^22.15.3",
+    "@vitest/coverage-v8": "^3.2.4",
     "@vitest/ui": "^3.2.4",
     "nodemon": "^3.1.10",
     "ts-node": "^10.9.2",
