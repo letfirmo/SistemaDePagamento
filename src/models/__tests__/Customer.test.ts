@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { Customer } from '../models/Customer';
-import { Region } from '../models/Region';
+import { Customer } from '../Customer';
+import { Region } from '../Region';
 
 describe('Customer', () => {
   // Helper function para criar uma Region válida

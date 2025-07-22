@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { PaymentMethod } from '../models/PaymentMethod';
+import { PaymentMethod } from '../PaymentMethod';
 
 // Criamos uma classe concreta de teste para poder testar a abstrata
 class TestPaymentMethod extends PaymentMethod {

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { Product } from '../models/Product';
+import { Product } from '../Product';
 
 describe('Product', () => {
   describe('When creating a product with valid data', () => {

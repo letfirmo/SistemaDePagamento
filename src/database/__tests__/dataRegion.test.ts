@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { Region } from '../models/Region';
-import { regions } from '../database/regions';
+import { Region } from '../../models/Region';
+import { regions } from '../regions';
 
 describe('Region Class', () => {
   it('When creating a new Region with valid parameters, then all properties should be correctly assigned', () => {

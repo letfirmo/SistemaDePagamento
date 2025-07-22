@@ -1,7 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { customers } from '../database/customer';
-import { Customer } from '../models/Customer';
-import { regions } from '../database/regions';
+import { customers } from '../customer';
+import { Customer } from '../../models/Customer';
 
 describe('Customers Module', () => {
   describe('When customers array is loaded, then it should', () => {

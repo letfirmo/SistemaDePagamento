@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { ErrorHandler } from '../utils/ErrorHandler';
+import { ErrorHandler } from '../ErrorHandler';
 
 describe('ErrorHandler', () => {
   describe('log', () => {

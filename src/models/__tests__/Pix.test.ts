@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { Pix } from '../models/Pix';
+import { Pix } from '../Pix';
 
 describe('Pix Payment Method', () => {
   it('When creating a Pix instance with a valid key, then the instance should be created successfully', () => {

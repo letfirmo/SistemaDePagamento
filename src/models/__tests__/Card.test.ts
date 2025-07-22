@@ -1,6 +1,6 @@
 import { describe, it, expect } from "vitest";
-import { Card, CardType } from "../models/Card";
-import { PaymentMethod } from "../models/PaymentMethod";
+import { Card, CardType } from "../Card";
+import { PaymentMethod } from "../PaymentMethod";
 
 describe("Card", () => {
   it("should be an instance of PaymentMethod", () => {

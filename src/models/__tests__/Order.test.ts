@@ -1,9 +1,9 @@
 import { describe, it, expect, beforeEach } from 'vitest'
-import { Order } from '../models/Order'
-import { PaymentMethod } from '../models/PaymentMethod'
-import { Customer } from '../models/Customer'
-import { Product } from '../models/Product'
-import { Region } from '../models/Region'
+import { Order } from '../Order'
+import { PaymentMethod } from '../PaymentMethod'
+import { Customer } from '../Customer'
+import { Product } from '../Product'
+import { Region } from '../Region'
 
 // Implementação concreta para teste
 class CreditCardPayment extends PaymentMethod {
