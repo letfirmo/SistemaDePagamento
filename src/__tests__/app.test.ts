@@ -1,181 +1,99 @@
-// // tests/simulation.test.ts
-// import { describe, it, expect, beforeEach, vi } from 'vitest';
-// import { 
-//   setupRegions, 
-//   setupCustomers, 
-//   createOrders, 
-//   processPayments, 
-//   generateReport,
-//   runSimulation,
-//   displayResults
-// } from '../app';
-// import { regionService } from '../services/RegionService';
-// import { customerService } from '../services/CustomerService';
-// import { orderService } from '../services/OrderService';
+// app.test.ts
+import { describe, it, expect, beforeEach, vi } from 'vitest';
+import { setupSimulation, generateSimulationReport } from '../app';
+import { regionService } from '../services/RegionService';
+import { customerService } from '../services/CustomerService';
+import { orderService } from '../services/OrderService';
+import { products } from '../database/product';
+import { customers } from '../database/customer';
 
-// describe('Simulation', () => {
-//   beforeEach(() => {
-//     // Reset services before each test
-//     regionService['regions'] = [];
-//     customerService['customers'] = [];
-//     orderService['orders'] = [];
-//   });
+describe('app.ts', () => {
+  beforeEach(() => {
+    // Reset services before each test
+    regionService['regions'] = [];
+    customerService['customers'] = [...customers];
+    orderService['orders'] = [];
+  });
 
-//   describe('setupRegions', () => {
-//     it('should create regions with correct data', () => {
-//       const result = setupRegions();
+  describe('setupSimulation', () => {
+    it('when setting up simulation, then should create regions, customers and orders correctly', () => {
+      // Act
+      const simulation = setupSimulation();
       
-//       expect(result.simoesfilho.name).toBe('Simões Filho');
-//       expect(result.simoesfilho.delivery).toBe(34.67);
-//       expect(result.brotas.name).toBe('Brotas');
-//       expect(result.brotas.delivery).toBe(12.34);
+      // Assert
+      expect(simulation.regions.simoesfilho.name).toBe('Simões Filho');
+      expect(simulation.regions.brotas.delivery).toBe(12.34);
       
-//       expect(regionService.getAll()).toHaveLength(2);
-//     });
-//   });
+      expect(simulation.customers.cliente1.name).toBe('Ana');
+      expect(simulation.customers.cliente2.region.name).toBe('Brotas');
+      
+      expect(simulation.orders.order1.items).toEqual([products[0]]);
+      expect(simulation.orders.order3.items).toHaveLength(2);
+      
+      expect(simulation.payments.pagamento1).toContain('PIX');
+      expect(simulation.payments.pagamento2).toContain('Débito');
+    });
 
-//   describe('setupCustomers', () => {
-//     it('should create customers with correct data', () => {
-//       const regions = setupRegions();
-//       const result = setupCustomers(regions);
+    it('when setting up simulation, then should add regions to regionService', () => {
+      // Act
+      setupSimulation();
       
-//       expect(result.cliente1.name).toBe('Ana');
-//       expect(result.cliente2.name).toBe('Carlos');
-//       expect(customerService.getAll()).toHaveLength(2);
-//     });
-//   });
+      // Assert
+      expect(regionService.getAll()).toHaveLength(2);
+      expect(regionService.findById('23')?.name).toBe('Simões Filho');
+    });
 
-//   describe('createOrders', () => {
-//     it('should create orders with correct data', () => {
-//       const regions = setupRegions();
-//       const customers = setupCustomers(regions);
-//       const result = createOrders(customers);
+    it('when setting up simulation, then should add customers to customerService', () => {
+      // Act
+      setupSimulation();
       
-//       expect(orderService.getAll()).toHaveLength(3);
-//       expect(result.order1.customer.name).toBe('Ana');
-//       expect(result.order2.items.length).toBe(1);
-//     });
-//   });
+      // Assert
+      expect(customerService.getAll().length).toBeGreaterThanOrEqual(customers.length + 2);
+      expect(customerService.findById('101')?.name).toBe('Ana');
+    });
 
-//   describe('processPayments', () => {
-//     it('should process payments correctly', () => {
-//       const regions = setupRegions();
-//       const customers = setupCustomers(regions);
-//       createOrders(customers);
+    it('when setting up simulation, then should create orders in orderService', () => {
+      // Act
+      setupSimulation();
       
-//       const result = processPayments();
+      // Assert
+      expect(orderService.getAll()).toHaveLength(3);
       
-//       expect(result.pagamento1).toContain('PIX');
-//       expect(result.pagamento2).toContain('Débito');
-//       expect(orderService.findOrderById('1')?.paid).toBe(true);
-//     });
-//   });
+      // Usando o novo método findById
+      expect(orderService.findById('1001')?.customer.name).toBe('Ana');
+      
+      // Ou ainda usando findOrderById (para compatibilidade)
+      expect(orderService.findOrderById('1001')?.customer.name).toBe('Ana');
+    });
+  });
 
-//   describe('generateReport', () => {
-//     it('should generate correct report', () => {
-//       const regions = setupRegions();
-//       const customers = setupCustomers(regions);
-//       createOrders(customers);
-//       processPayments();
+  describe('generateSimulationReport', () => {
+    it('when generating report after simulation, then should return correct report structure', () => {
+      // Arrange
+      setupSimulation();
       
-//       const result = generateReport();
+      // Act
+      const report = generateSimulationReport();
       
-//       expect(result).toContain('RELATÓRIO DO DIA');
-//       expect(result).toContain('Pedidos pagos: 3');
-//     });
-//   });
+      // Assert
+      expect(report.report).toContain('RELATÓRIO DO DIA');
+      expect(report.report).toContain('Pedidos pagos: 3');
+      expect(report.orderDetails).toHaveLength(3);
+      expect(report.orders).toHaveLength(3);
+    });
 
-//   describe('displayResults', () => {
-//     it('should display results without errors', () => {
-//       // Mock console.log to avoid output during tests
-//       const consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
+    it('when generating report, then order details should contain correct information', () => {
+      // Arrange
+      setupSimulation();
       
-//       const regions = setupRegions();
-//       const customers = setupCustomers(regions);
-//       createOrders(customers);
+      // Act
+      const report = generateSimulationReport();
       
-//       expect(() => {
-//         displayResults();
-//       }).not.toThrow();
-      
-//       // Verify console.log was called
-//       expect(consoleSpy).toHaveBeenCalled();
-      
-//       // Restore console.log
-//       consoleSpy.mockRestore();
-//     });
-
-//     it('should display results and process payments internally', () => {
-//       // Mock console.log to avoid output during tests
-//       const consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
-      
-//       const regions = setupRegions();
-//       const customers = setupCustomers(regions);
-//       createOrders(customers);
-//       // Note: displayResults() calls processPayments() internally, so we don't call it here
-      
-//       expect(() => {
-//         displayResults();
-//       }).not.toThrow();
-      
-//       // Verify console.log was called multiple times (should be more than just once)
-//       expect(consoleSpy.mock.calls.length).toBeGreaterThan(1);
-      
-//       // After displayResults(), all orders should be paid
-//       expect(orderService.getAll().every(order => order.paid)).toBe(true);
-      
-//       consoleSpy.mockRestore();
-//     });
-//   });
-
-//   describe('Integration Tests', () => {
-//     it('should run full workflow step by step', () => {
-//       // Step 1: Setup regions
-//       const regions = setupRegions();
-//       expect(regionService.getAll()).toHaveLength(2);
-      
-//       // Step 2: Setup customers
-//       const customers = setupCustomers(regions);
-//       expect(customerService.getAll()).toHaveLength(2);
-      
-//       // Step 3: Create orders
-//       const orders = createOrders(customers);
-//       expect(orderService.getAll()).toHaveLength(3);
-//       expect(orders.order1.paid).toBe(false);
-      
-//       // Step 4: Process payments
-//       const payments = processPayments();
-//       expect(payments.pagamento1).toBeDefined();
-//       expect(payments.pagamento2).toBeDefined();
-//       expect(payments.pagamento3).toBeDefined();
-//       expect(orderService.findOrderById('1')?.paid).toBe(true);
-      
-//       // Step 5: Generate report
-//       const report = generateReport();
-//       expect(report).toContain('RELATÓRIO DO DIA');
-//     });
-//   });
-
-//   describe('runSimulation', () => {
-//     it('should run complete simulation without errors', () => {
-//       expect(() => runSimulation()).not.toThrow();
-//     });
-
-//     it('should run complete simulation and verify final state', () => {
-//       // Mock console.log to avoid output during tests
-//       const consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
-      
-//       runSimulation();
-      
-//       // Verify that orders were created and processed
-//       const allOrders = orderService.getAll();
-//       expect(allOrders).toHaveLength(3);
-//       expect(allOrders.every(order => order.paid)).toBe(true);
-      
-//       // Verify console.log was called (from displayResults)
-//       expect(consoleSpy).toHaveBeenCalled();
-      
-//       consoleSpy.mockRestore();
-//     });
-//   });
-// });
+      // Assert
+      expect(report.orderDetails.some(d => d.includes('Ana'))).toBe(true);
+      expect(report.orderDetails.some(d => d.includes(products[0].name))).toBe(true);
+      expect(report.orderDetails.some(d => d.includes('Carlos'))).toBe(true);
+      expect(report.orderDetails.some(d => d.includes(products[2].name))).toBe(true);
+    });
+  });
+});
