@@ -46,12 +46,11 @@ ISC
 ```
 SistemaDePagamento/
 ├── src/
-│   ├── controllers/
+│   ├── tests/
+│   ├── database/
 │   ├── models/
-│   ├── routes/
 │   ├── services/
 │   └── utils/
-├── tests/
 ├── package.json
 ├── tsconfig.json
 └── README.md
