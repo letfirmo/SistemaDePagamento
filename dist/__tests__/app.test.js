@@ -1,146 +1,71 @@
 "use strict";
-// // tests/simulation.test.ts
-// import { describe, it, expect, beforeEach, vi } from 'vitest';
-// import { 
-//   setupRegions, 
-//   setupCustomers, 
-//   createOrders, 
-//   processPayments, 
-//   generateReport,
-//   runSimulation,
-//   displayResults
-// } from '../app';
-// import { regionService } from '../services/RegionService';
-// import { customerService } from '../services/CustomerService';
-// import { orderService } from '../services/OrderService';
-// describe('Simulation', () => {
-//   beforeEach(() => {
-//     // Reset services before each test
-//     regionService['regions'] = [];
-//     customerService['customers'] = [];
-//     orderService['orders'] = [];
-//   });
-//   describe('setupRegions', () => {
-//     it('should create regions with correct data', () => {
-//       const result = setupRegions();
-//       expect(result.simoesfilho.name).toBe('Simões Filho');
-//       expect(result.simoesfilho.delivery).toBe(34.67);
-//       expect(result.brotas.name).toBe('Brotas');
-//       expect(result.brotas.delivery).toBe(12.34);
-//       expect(regionService.getAll()).toHaveLength(2);
-//     });
-//   });
-//   describe('setupCustomers', () => {
-//     it('should create customers with correct data', () => {
-//       const regions = setupRegions();
-//       const result = setupCustomers(regions);
-//       expect(result.cliente1.name).toBe('Ana');
-//       expect(result.cliente2.name).toBe('Carlos');
-//       expect(customerService.getAll()).toHaveLength(2);
-//     });
-//   });
-//   describe('createOrders', () => {
-//     it('should create orders with correct data', () => {
-//       const regions = setupRegions();
-//       const customers = setupCustomers(regions);
-//       const result = createOrders(customers);
-//       expect(orderService.getAll()).toHaveLength(3);
-//       expect(result.order1.customer.name).toBe('Ana');
-//       expect(result.order2.items.length).toBe(1);
-//     });
-//   });
-//   describe('processPayments', () => {
-//     it('should process payments correctly', () => {
-//       const regions = setupRegions();
-//       const customers = setupCustomers(regions);
-//       createOrders(customers);
-//       const result = processPayments();
-//       expect(result.pagamento1).toContain('PIX');
-//       expect(result.pagamento2).toContain('Débito');
-//       expect(orderService.findOrderById('1')?.paid).toBe(true);
-//     });
-//   });
-//   describe('generateReport', () => {
-//     it('should generate correct report', () => {
-//       const regions = setupRegions();
-//       const customers = setupCustomers(regions);
-//       createOrders(customers);
-//       processPayments();
-//       const result = generateReport();
-//       expect(result).toContain('RELATÓRIO DO DIA');
-//       expect(result).toContain('Pedidos pagos: 3');
-//     });
-//   });
-//   describe('displayResults', () => {
-//     it('should display results without errors', () => {
-//       // Mock console.log to avoid output during tests
-//       const consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
-//       const regions = setupRegions();
-//       const customers = setupCustomers(regions);
-//       createOrders(customers);
-//       expect(() => {
-//         displayResults();
-//       }).not.toThrow();
-//       // Verify console.log was called
-//       expect(consoleSpy).toHaveBeenCalled();
-//       // Restore console.log
-//       consoleSpy.mockRestore();
-//     });
-//     it('should display results and process payments internally', () => {
-//       // Mock console.log to avoid output during tests
-//       const consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
-//       const regions = setupRegions();
-//       const customers = setupCustomers(regions);
-//       createOrders(customers);
-//       // Note: displayResults() calls processPayments() internally, so we don't call it here
-//       expect(() => {
-//         displayResults();
-//       }).not.toThrow();
-//       // Verify console.log was called multiple times (should be more than just once)
-//       expect(consoleSpy.mock.calls.length).toBeGreaterThan(1);
-//       // After displayResults(), all orders should be paid
-//       expect(orderService.getAll().every(order => order.paid)).toBe(true);
-//       consoleSpy.mockRestore();
-//     });
-//   });
-//   describe('Integration Tests', () => {
-//     it('should run full workflow step by step', () => {
-//       // Step 1: Setup regions
-//       const regions = setupRegions();
-//       expect(regionService.getAll()).toHaveLength(2);
-//       // Step 2: Setup customers
-//       const customers = setupCustomers(regions);
-//       expect(customerService.getAll()).toHaveLength(2);
-//       // Step 3: Create orders
-//       const orders = createOrders(customers);
-//       expect(orderService.getAll()).toHaveLength(3);
-//       expect(orders.order1.paid).toBe(false);
-//       // Step 4: Process payments
-//       const payments = processPayments();
-//       expect(payments.pagamento1).toBeDefined();
-//       expect(payments.pagamento2).toBeDefined();
-//       expect(payments.pagamento3).toBeDefined();
-//       expect(orderService.findOrderById('1')?.paid).toBe(true);
-//       // Step 5: Generate report
-//       const report = generateReport();
-//       expect(report).toContain('RELATÓRIO DO DIA');
-//     });
-//   });
-//   describe('runSimulation', () => {
-//     it('should run complete simulation without errors', () => {
-//       expect(() => runSimulation()).not.toThrow();
-//     });
-//     it('should run complete simulation and verify final state', () => {
-//       // Mock console.log to avoid output during tests
-//       const consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
-//       runSimulation();
-//       // Verify that orders were created and processed
-//       const allOrders = orderService.getAll();
-//       expect(allOrders).toHaveLength(3);
-//       expect(allOrders.every(order => order.paid)).toBe(true);
-//       // Verify console.log was called (from displayResults)
-//       expect(consoleSpy).toHaveBeenCalled();
-//       consoleSpy.mockRestore();
-//     });
-//   });
-// });
+Object.defineProperty(exports, "__esModule", { value: true });
+// app.test.ts
+const vitest_1 = require("vitest");
+const app_1 = require("../app");
+const RegionService_1 = require("../services/RegionService");
+const CustomerService_1 = require("../services/CustomerService");
+const OrderService_1 = require("../services/OrderService");
+const product_1 = require("../database/product");
+const customer_1 = require("../database/customer");
+(0, vitest_1.describe)('app.ts', () => {
+    (0, vitest_1.beforeEach)(() => {
+        // Reset services before each test
+        RegionService_1.regionService['regions'] = [];
+        CustomerService_1.customerService['customers'] = [...customer_1.customers];
+        OrderService_1.orderService['orders'] = [];
+    });
+    (0, vitest_1.describe)('setupSimulation', () => {
+        (0, vitest_1.it)('should create regions, customers and orders correctly', () => {
+            const simulation = (0, app_1.setupSimulation)();
+            (0, vitest_1.expect)(simulation.regions.simoesfilho.name).toBe('Simões Filho');
+            (0, vitest_1.expect)(simulation.regions.brotas.delivery).toBe(12.34);
+            (0, vitest_1.expect)(simulation.customers.cliente1.name).toBe('Ana');
+            (0, vitest_1.expect)(simulation.customers.cliente2.region.name).toBe('Brotas');
+            (0, vitest_1.expect)(simulation.orders.order1.items).toEqual([product_1.products[0]]);
+            (0, vitest_1.expect)(simulation.orders.order3.items).toHaveLength(2);
+            (0, vitest_1.expect)(simulation.payments.pagamento1).toContain('PIX');
+            (0, vitest_1.expect)(simulation.payments.pagamento2).toContain('Débito');
+        });
+        // ... outros testes de setupSimulation ...
+    });
+    (0, vitest_1.describe)('generateSimulationReport', () => {
+        (0, vitest_1.it)('should return correct report structure', () => {
+            (0, app_1.setupSimulation)();
+            const report = (0, app_1.generateSimulationReport)();
+            (0, vitest_1.expect)(report.report).toContain('RELATÓRIO DO DIA');
+            (0, vitest_1.expect)(report.report).toContain('Pedidos pagos: 3');
+            (0, vitest_1.expect)(report.orderDetails).toHaveLength(3);
+        });
+        // ... outros testes de generateSimulationReport ...
+    });
+    (0, vitest_1.describe)('main execution', () => {
+        (0, vitest_1.it)('should execute all steps without errors', () => {
+            const consoleSpy = vitest_1.vi.spyOn(console, 'log').mockImplementation(() => { });
+            try {
+                (0, app_1.main)();
+                (0, vitest_1.expect)(consoleSpy).toHaveBeenCalledWith('--------------------------------PEDIDOS---------------------------------');
+                (0, vitest_1.expect)(consoleSpy).toHaveBeenCalledWith('\nPAGAMENTOS:\n');
+                (0, vitest_1.expect)(consoleSpy).toHaveBeenCalledWith(vitest_1.expect.stringContaining('RELATÓRIO DO DIA'));
+            }
+            finally {
+                consoleSpy.mockRestore();
+            }
+        });
+        (0, vitest_1.it)('should log all order details', () => {
+            const consoleSpy = vitest_1.vi.spyOn(console, 'log').mockImplementation(() => { });
+            try {
+                (0, app_1.main)();
+                const orderLogs = consoleSpy.mock.calls
+                    .flat()
+                    .filter((call) => typeof call === 'string' && call.startsWith('Pedido'));
+                (0, vitest_1.expect)(orderLogs).toHaveLength(3);
+                (0, vitest_1.expect)(orderLogs[0]).toContain('Ana');
+                (0, vitest_1.expect)(orderLogs[1]).toContain('Carlos');
+            }
+            finally {
+                consoleSpy.mockRestore();
+            }
+        });
+    });
+});

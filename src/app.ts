@@ -54,8 +54,7 @@ export function generateSimulationReport() {
   };
 }
 
-// Execução principal apenas se não for teste
-if (process.env.NODE_ENV !== 'test') {
+export function main() {
   const simulation = setupSimulation();
   const report = generateSimulationReport();
   
@@ -69,4 +68,9 @@ if (process.env.NODE_ENV !== 'test') {
   console.log(simulation.payments.pagamento3);
   
   console.log('\n' + report.report);
+}
+
+// Execução principal apenas se não for teste
+if (process.env.NODE_ENV !== 'test' && require.main === module) {
+  main();
 }

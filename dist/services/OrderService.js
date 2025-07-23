@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.orderService = exports.OrderService = void 0;
-const Order_1 = require(".././models/Order");
+const Order_1 = require("../models/Order");
 class OrderService {
     constructor() {
         this.orders = [];
@@ -15,12 +15,15 @@ class OrderService {
     getAll() {
         return [...this.orders];
     }
+    findById(id) {
+        return this.orders.find(order => order.id === id);
+    }
+    // Mantido para compatibilidade (pode ser removido depois de atualizar todos os usos)
     findOrderById(id) {
-        const orderFound = this.orders.find(o => o.id === id);
-        return orderFound;
+        return this.findById(id);
     }
     payOrder(orderId) {
-        const order = this.findOrderById(orderId);
+        const order = this.findById(orderId);
         if (!order) {
             throw new Error(`Pedido com id ${orderId} não foi encontrado.`);
         }
@@ -32,7 +35,7 @@ class OrderService {
         return paymentMessage;
     }
     deleteOrderById(id) {
-        const index = this.orders.findIndex(o => o.id === id);
+        const index = this.orders.findIndex(order => order.id === id);
         if (index !== -1) {
             this.orders.splice(index, 1);
             return true;
@@ -42,7 +45,7 @@ class OrderService {
     calculateTotal(items, customer) {
         let productsTotal = 0;
         const delivery = customer.region.delivery;
-        items.forEach((i) => (productsTotal += i.price));
+        items.forEach(item => (productsTotal += item.price));
         return productsTotal + delivery;
     }
 }
